@@ -20,13 +20,10 @@ package com.github.danielsl.regrow.windows;
 import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.actors.hero.Hero;
-import com.github.danielsl.regrow.actors.mobs.npcs.ConstructionCore;
 import com.github.danielsl.regrow.actors.mobs.npcs.Ghost;
 import com.github.danielsl.regrow.items.Item;
 import com.github.danielsl.regrow.scenes.PixelScene;
 import com.github.danielsl.regrow.sprites.FetidRatSprite;
-import com.github.danielsl.regrow.sprites.GnollTricksterSprite;
-import com.github.danielsl.regrow.sprites.GreatCrabSprite;
 import com.github.danielsl.regrow.ui.RedButton;
 import com.github.danielsl.regrow.ui.Window;
 import com.github.danielsl.regrow.utils.GLog;
@@ -51,7 +48,7 @@ public class WndConstructionCore extends Window {
     private static final int BTN_HEIGHT = 20;
     private static final float GAP = 2;
 
-    public WndConstructionCore(final ConstructionCore ghost) {
+    public WndConstructionCore(/*final ConstructionCore core*/) {
 
         super();
 
@@ -72,7 +69,7 @@ public class WndConstructionCore extends Window {
         message.y = titlebar.bottom() + GAP;
         add(message);
 
-        RedButton btnWeapon = new RedButton(TXT_WEAPON) {
+        RedButton btnWeapon = new RedButton("ACTIVATE") {
             @Override
             protected void onClick() {
                 //selectReward(ghost, Ghost.Quest.weapon);

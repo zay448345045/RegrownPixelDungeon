@@ -23,6 +23,7 @@ import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.ShatteredPixelDungeon;
 import com.github.danielsl.regrow.items.Bomb;
+import com.github.danielsl.regrow.items.DebugSpawner;
 import com.github.danielsl.regrow.items.EasterEgg;
 import com.github.danielsl.regrow.items.Egg;
 import com.github.danielsl.regrow.items.OtilukesJournal;
@@ -54,6 +55,7 @@ import com.github.danielsl.regrow.items.scrolls.ScrollOfUpgrade;
 import com.github.danielsl.regrow.items.wands.Wand;
 import com.github.danielsl.regrow.items.wands.WandOfFlock;
 import com.github.danielsl.regrow.items.wands.WandOfMagicMissile;
+import com.github.danielsl.regrow.items.wands.WandOfRegrowth;
 import com.github.danielsl.regrow.items.weapon.melee.Dagger;
 import com.github.danielsl.regrow.items.weapon.melee.Knuckles;
 import com.github.danielsl.regrow.items.weapon.melee.ShortSword;
@@ -187,6 +189,8 @@ public enum HeroClass {
 
 		new Blueberry().identify().collect();
 		new PotionOfMindVision().identify().collect();
+		new WandOfRegrowth().identify().upgrade(20).collect();
+		new DebugSpawner().identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();
 		

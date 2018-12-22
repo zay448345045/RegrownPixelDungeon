@@ -184,6 +184,7 @@ public class SandalsOfNature extends Artifact {
 				updateQuickslot();
 			}
 		}
+
 	}
 
 	protected WndBag.Listener itemSelector = new WndBag.Listener() {

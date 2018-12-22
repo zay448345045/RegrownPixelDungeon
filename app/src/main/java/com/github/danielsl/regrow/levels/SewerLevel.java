@@ -22,7 +22,6 @@ import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.DungeonTilemap;
 import com.github.danielsl.regrow.actors.Actor;
 import com.github.danielsl.regrow.actors.hero.HeroClass;
-import com.github.danielsl.regrow.actors.mobs.npcs.ConstructionCore;
 import com.github.danielsl.regrow.actors.mobs.npcs.Ghost;
 import com.github.danielsl.regrow.actors.mobs.npcs.Ghost.GnollArcher;
 import com.github.danielsl.regrow.actors.mobs.npcs.Tinkerer1;
@@ -156,25 +155,13 @@ public class SewerLevel extends RegularLevel {
 				
 		Ghost.Quest.spawn(this);
 		spawnGnoll(this);
-		spawnCoreDebug(this);
 
 		if (Dungeon.hero.heroClass==HeroClass.ROGUE && Random.Int(3) == 0){addItemToSpawn(new Bomb());}
 		super.createItems();
 	}
 
-	public static void spawnCoreDebug(SewerLevel level){
-		if(Dungeon.depth == 1){
-			ConstructionCore core = new ConstructionCore();
-			do {
-				core.pos = level.randomRespawnCell();
-
-			} while (core.pos == -1);
-			level.mobs.add(core);
-			Actor.occupyCell(core);
 
 
-		}
-	}
 
 	public static void spawnGnoll(SewerLevel level) {
 		if (Dungeon.depth == 4 && !Dungeon.gnollspawned){
