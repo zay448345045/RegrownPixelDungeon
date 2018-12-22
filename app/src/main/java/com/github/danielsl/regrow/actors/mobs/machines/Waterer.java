@@ -18,6 +18,11 @@ public class Waterer extends Machine{
 
     ArrayList<Item> collectedItems = new ArrayList<>();
 
+    @Override
+    public void showAOE() {
+
+    }
+
     public void doWork() {
 
 

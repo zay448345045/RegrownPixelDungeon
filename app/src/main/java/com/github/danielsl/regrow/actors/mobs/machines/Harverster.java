@@ -10,6 +10,11 @@ import com.github.danielsl.regrow.windows.WndConstructionCore;
 
 public class Harverster extends Machine {
 
+    @Override
+    public void showAOE() {
+
+    }
+
     public void doWork() {
 
 

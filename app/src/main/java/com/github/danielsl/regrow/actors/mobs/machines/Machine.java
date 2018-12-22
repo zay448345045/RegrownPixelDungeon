@@ -82,12 +82,39 @@ import com.watabou.utils.Random;
 public abstract class Machine extends NPC {
 
     {
-        name = "arcane construction core";
+        name = "machine";
         spriteClass = TowerSprite.class;
-
         flying = false;
 
         state = PASSIVE;
+    }
+
+    public int orientation = 0;
+
+    public int rotate(){
+        this.orientation = this.orientation < 4 ? this.orientation+1 : 0;
+        return this.orientation;
+    }
+
+    public abstract void showAOE();
+
+    public int getAOE(){
+        switch (this.orientation){
+            case 0:
+                return 1;
+            case 1:
+                return Level.getWidth();
+
+            case 2:
+                return -1;
+            case 3:
+                return -Level.getWidth();
+            default:
+                return 1;
+        }
+
+
+
     }
 
     @Override

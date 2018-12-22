@@ -35,6 +35,7 @@ import com.github.danielsl.regrow.actors.buffs.Dewcharge;
 import com.github.danielsl.regrow.actors.buffs.Light;
 import com.github.danielsl.regrow.actors.hero.Hero;
 import com.github.danielsl.regrow.actors.hero.HeroClass;
+import com.github.danielsl.regrow.actors.mobs.machines.Machine;
 import com.github.danielsl.regrow.actors.mobs.npcs.Blacksmith;
 import com.github.danielsl.regrow.actors.mobs.npcs.Ghost;
 import com.github.danielsl.regrow.actors.mobs.npcs.Imp;
@@ -98,6 +99,7 @@ import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
 import com.watabou.utils.SparseArray;
+
 
 public class Dungeon {
 
@@ -168,6 +170,8 @@ public class Dungeon {
 	public static int zotDrains = 0;
 	public static int shellCharge = 20;
 	public static boolean sporkAvail = false;
+
+
 
 	public static Hero hero;
 	public static Level level;
