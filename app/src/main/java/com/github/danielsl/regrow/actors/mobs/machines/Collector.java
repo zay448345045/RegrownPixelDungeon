@@ -18,7 +18,7 @@ public class Collector extends Machine{
 
 
         for (int n : Level.NEIGHBOURS8) {
-            int c = this.pos + n;
+            int c = this.pos + n + 2;
 
             if(Dungeon.level.heaps.get(c)!=null)
             collectedItems.add(Dungeon.level.heaps.get(c).pickUp());

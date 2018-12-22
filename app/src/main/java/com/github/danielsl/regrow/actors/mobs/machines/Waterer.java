@@ -20,34 +20,9 @@ public class Waterer extends Machine{
 
     public void doWork() {
 
-        int positive = 0;
-        int negative = 0;
 
-        int distance = 1 + positive + negative;
-
-
-        int cx = this.pos % Level.getWidth();
-        int cy = this.pos / Level.getWidth();
-        int ax = cx - distance;
-        if (ax < 0) {
-            ax = 0;
-        }
-        int bx = cx + distance;
-        if (bx >= Level.getWidth()) {
-            bx = Level.getWidth() - 1;
-        }
-        int ay = cy - distance;
-        if (ay < 0) {
-            ay = 0;
-        }
-        int by = cy + distance;
-        if (by >= Level.HEIGHT) {
-            by = Level.HEIGHT - 1;
-        }
-
-
-        for (int y = ay; y <= by; y++) {
-            for (int x = ax, p = ax + y * Level.getWidth(); x <= bx; x++, p++) {
+            for (int i : Level.NEIGHBOURS8) {
+                int p = this.pos + i + 2*Level.getWidth();
 
                 if (Dungeon.visible[p]) {
                     int c = Dungeon.level.map[p];
@@ -57,7 +32,7 @@ public class Waterer extends Machine{
                     }
                 }
             }
-        }
+
     }
 
     @Override

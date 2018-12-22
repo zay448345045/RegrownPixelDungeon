@@ -21,6 +21,7 @@ import com.github.danielsl.regrow.Assets;
 import com.github.danielsl.regrow.Badges;
 import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
+import com.github.danielsl.regrow.Journal;
 import com.github.danielsl.regrow.ShatteredPixelDungeon;
 import com.github.danielsl.regrow.items.Bomb;
 import com.github.danielsl.regrow.items.DebugSpawner;
@@ -191,6 +192,10 @@ public enum HeroClass {
 		new PotionOfMindVision().identify().collect();
 		new WandOfRegrowth().identify().upgrade(20).collect();
 		new DebugSpawner().identify().collect();
+		new OtilukesJournal().identify().collect();
+		JournalPage page = new JournalPage();
+		page.room = 0;
+		page.identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();
 		
