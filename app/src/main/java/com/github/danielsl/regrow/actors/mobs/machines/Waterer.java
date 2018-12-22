@@ -26,8 +26,8 @@ public class Waterer extends Machine{
         int distance = 1 + positive + negative;
 
 
-        int cx = Dungeon.hero.pos % Level.getWidth();
-        int cy = Dungeon.hero.pos / Level.getWidth();
+        int cx = this.pos % Level.getWidth();
+        int cy = this.pos / Level.getWidth();
         int ax = cx - distance;
         if (ax < 0) {
             ax = 0;
