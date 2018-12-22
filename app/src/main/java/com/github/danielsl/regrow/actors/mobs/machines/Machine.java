@@ -17,67 +17,17 @@
  */
 package com.github.danielsl.regrow.actors.mobs.machines;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
-import com.github.danielsl.regrow.Assets;
-import com.github.danielsl.regrow.Dungeon;
-import com.github.danielsl.regrow.Journal;
-import com.github.danielsl.regrow.Statistics;
-import com.github.danielsl.regrow.actors.Actor;
 import com.github.danielsl.regrow.actors.Char;
-import com.github.danielsl.regrow.actors.blobs.Blob;
-import com.github.danielsl.regrow.actors.blobs.Fire;
-import com.github.danielsl.regrow.actors.blobs.StenchGas;
 import com.github.danielsl.regrow.actors.buffs.Buff;
-import com.github.danielsl.regrow.actors.buffs.Burning;
-import com.github.danielsl.regrow.actors.buffs.Ooze;
 import com.github.danielsl.regrow.actors.buffs.Paralysis;
-import com.github.danielsl.regrow.actors.buffs.Poison;
 import com.github.danielsl.regrow.actors.buffs.Roots;
-import com.github.danielsl.regrow.actors.mobs.Crab;
-import com.github.danielsl.regrow.actors.mobs.Gnoll;
-import com.github.danielsl.regrow.actors.mobs.Mob;
-import com.github.danielsl.regrow.actors.mobs.Rat;
-import com.github.danielsl.regrow.actors.mobs.npcs.Ghost;
 import com.github.danielsl.regrow.actors.mobs.npcs.NPC;
-import com.github.danielsl.regrow.effects.CellEmitter;
-import com.github.danielsl.regrow.effects.Speck;
-import com.github.danielsl.regrow.items.Generator;
-import com.github.danielsl.regrow.items.Gold;
-import com.github.danielsl.regrow.items.Item;
-import com.github.danielsl.regrow.items.SewersKey;
-import com.github.danielsl.regrow.items.TenguKey;
-import com.github.danielsl.regrow.items.armor.Armor;
-import com.github.danielsl.regrow.items.artifacts.SandalsOfNature;
-import com.github.danielsl.regrow.items.food.MysteryMeat;
-import com.github.danielsl.regrow.items.journalpages.SafeSpotPage;
-import com.github.danielsl.regrow.items.wands.Wand;
-import com.github.danielsl.regrow.items.weapon.Weapon;
-import com.github.danielsl.regrow.items.weapon.missiles.CurareDart;
-import com.github.danielsl.regrow.items.weapon.missiles.ForestDart;
-import com.github.danielsl.regrow.items.weapon.missiles.MissileWeapon;
+import com.github.danielsl.regrow.effects.CheckedCell;
 import com.github.danielsl.regrow.levels.Level;
-import com.github.danielsl.regrow.levels.SewerLevel;
-import com.github.danielsl.regrow.levels.features.HighGrass;
-import com.github.danielsl.regrow.levels.traps.LightningTrap;
-import com.github.danielsl.regrow.mechanics.Ballistica;
-import com.github.danielsl.regrow.scenes.GameScene;
-import com.github.danielsl.regrow.sprites.CharSprite;
-import com.github.danielsl.regrow.sprites.FetidRatSprite;
-import com.github.danielsl.regrow.sprites.GhostSprite;
-import com.github.danielsl.regrow.sprites.GnollArcherSprite;
-import com.github.danielsl.regrow.sprites.GnollTricksterSprite;
-import com.github.danielsl.regrow.sprites.GreatCrabSprite;
 import com.github.danielsl.regrow.sprites.TowerSprite;
-import com.github.danielsl.regrow.utils.GLog;
-import com.github.danielsl.regrow.utils.Utils;
-import com.github.danielsl.regrow.windows.WndConstructionCore;
-import com.github.danielsl.regrow.windows.WndQuest;
-import com.github.danielsl.regrow.windows.WndSadGhost;
-import com.watabou.noosa.audio.Sample;
-import com.watabou.utils.Bundle;
-import com.watabou.utils.Highlighter;
-import com.watabou.utils.Random;
 
 public abstract class Machine extends NPC {
 
@@ -92,19 +42,25 @@ public abstract class Machine extends NPC {
     public int orientation = 0;
 
     public int rotate(){
-        this.orientation = this.orientation < 4 ? this.orientation+1 : 0;
+        this.orientation = this.orientation < 3 ? this.orientation+1 : 0;
         return this.orientation;
     }
 
-    public abstract void showAOE();
+    public abstract ArrayList<Integer> AOE();
 
-    public int getAOE(){
+    public void showAOE(){
+        for (int n : AOE()) {
+
+            sprite.parent.addToBack(new CheckedCell(n));
+        }
+    };
+
+    public int getDirection(){
         switch (this.orientation){
             case 0:
                 return 1;
             case 1:
                 return Level.getWidth();
-
             case 2:
                 return -1;
             case 3:

@@ -72,7 +72,7 @@
 //import com.github.danielsl.regrow.sprites.TowerSprite;
 //import com.github.danielsl.regrow.utils.GLog;
 //import com.github.danielsl.regrow.utils.Utils;
-//import com.github.danielsl.regrow.windows.WndConstructionCore;
+//import com.github.danielsl.regrow.windows.machineWindows.WndCollector.WndConstructionCore;
 //import com.github.danielsl.regrow.windows.WndQuest;
 //import com.github.danielsl.regrow.windows.WndSadGhost;
 //import com.watabou.noosa.audio.Sample;
