@@ -156,6 +156,7 @@ public class SewerLevel extends RegularLevel {
 				
 		Ghost.Quest.spawn(this);
 		spawnGnoll(this);
+		spawnCoreDebug(this);
 
 		if (Dungeon.hero.heroClass==HeroClass.ROGUE && Random.Int(3) == 0){addItemToSpawn(new Bomb());}
 		super.createItems();

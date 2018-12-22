@@ -33,6 +33,7 @@ import com.github.danielsl.regrow.items.armor.ClothArmor;
 import com.github.danielsl.regrow.items.armor.PlateArmor;
 import com.github.danielsl.regrow.items.artifacts.CloakOfShadows;
 import com.github.danielsl.regrow.items.bags.KeyRing;
+import com.github.danielsl.regrow.items.food.Blueberry;
 import com.github.danielsl.regrow.items.food.Food;
 import com.github.danielsl.regrow.items.journalpages.JournalPage;
 import com.github.danielsl.regrow.items.journalpages.Sokoban1;
@@ -184,6 +185,7 @@ public enum HeroClass {
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.identify().collect();
 
+		new Blueberry().identify().collect();
 		new PotionOfMindVision().identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();
