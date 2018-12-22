@@ -31,7 +31,7 @@ public class Collector extends Machine{
     @Override
     public void interact(){
         for(Item i : collectedItems) {
-            i.doPickUpNoTime(Dungeon.hero);
+            if(!i.doPickUpNoTime(Dungeon.hero)) i.doDrop(Dungeon.hero);
 
         }
         Dungeon.hero.spendAndNext(TIME_TO_PICK_UP);
