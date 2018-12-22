@@ -30,7 +30,7 @@ public class Layouts {
 	//private static final int T = Terrain.INACTIVE_TRAP;
 
 	private static final int E = Terrain.EMPTY;
-	private static final int N = Terrain.EMPTY_DECO;
+	private static final int N = Terrain.EMPTY_SP;
 	//private static final int X = Terrain.EXIT;
 
 	private static final int M = Terrain.WALL_DECO;

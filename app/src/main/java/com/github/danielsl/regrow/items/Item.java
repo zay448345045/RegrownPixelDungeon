@@ -112,6 +112,20 @@ public class Item implements Bundlable {
 		}
 	}
 
+	public boolean doPickUpNoTime(Hero hero) {
+		if (collect(hero.belongings.backpack)) {
+
+			GameScene.pickUp(this);
+			Sample.INSTANCE.play(Assets.SND_ITEM);
+
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
+
 	public void doDrop(Hero hero) {
 		hero.spendAndNext(TIME_TO_DROP);
 		Dungeon.level.drop(detachAll(hero.belongings.backpack), hero.pos).sprite

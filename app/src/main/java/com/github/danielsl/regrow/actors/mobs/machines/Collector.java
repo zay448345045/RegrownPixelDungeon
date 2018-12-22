@@ -12,6 +12,9 @@ import java.util.ArrayList;
 
 public class Collector extends Machine{
 
+
+    protected static final float TIME_TO_PICK_UP = 1.0f;
+
     ArrayList<Item> collectedItems = new ArrayList<>();
 
     public void doWork() {
@@ -28,8 +31,10 @@ public class Collector extends Machine{
     @Override
     public void interact(){
         for(Item i : collectedItems) {
-            i.doPickUp(Dungeon.hero);
+            i.doPickUpNoTime(Dungeon.hero);
+
         }
+        Dungeon.hero.spendAndNext(TIME_TO_PICK_UP);
         collectedItems.clear();
     }
 

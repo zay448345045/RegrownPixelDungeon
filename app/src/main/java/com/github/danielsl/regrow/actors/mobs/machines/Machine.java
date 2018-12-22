@@ -124,7 +124,7 @@ public abstract class Machine extends NPC {
 
     @Override
     public float speed() {
-        return 0.0f;
+        return 1f;
     }
 
     @Override
