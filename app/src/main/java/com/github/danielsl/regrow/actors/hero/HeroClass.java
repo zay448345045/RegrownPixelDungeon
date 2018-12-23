@@ -23,12 +23,14 @@ import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.Journal;
 import com.github.danielsl.regrow.ShatteredPixelDungeon;
+import com.github.danielsl.regrow.actors.mobs.Rat;
 import com.github.danielsl.regrow.items.Bomb;
 import com.github.danielsl.regrow.items.DebugSpawner;
 import com.github.danielsl.regrow.items.EasterEgg;
 import com.github.danielsl.regrow.items.Egg;
 import com.github.danielsl.regrow.items.OtilukesJournal;
 import com.github.danielsl.regrow.items.ShadowDragonEgg;
+import com.github.danielsl.regrow.items.Soul;
 import com.github.danielsl.regrow.items.TomeOfMastery;
 import com.github.danielsl.regrow.items.Whistle;
 import com.github.danielsl.regrow.items.armor.ClothArmor;
@@ -59,6 +61,7 @@ import com.github.danielsl.regrow.items.wands.WandOfMagicMissile;
 import com.github.danielsl.regrow.items.wands.WandOfRegrowth;
 import com.github.danielsl.regrow.items.weapon.melee.Dagger;
 import com.github.danielsl.regrow.items.weapon.melee.Knuckles;
+import com.github.danielsl.regrow.items.weapon.melee.SacrificialDagger;
 import com.github.danielsl.regrow.items.weapon.melee.ShortSword;
 import com.github.danielsl.regrow.items.weapon.melee.WarHammer;
 import com.github.danielsl.regrow.items.weapon.missiles.Boomerang;
@@ -196,6 +199,9 @@ public enum HeroClass {
 		JournalPage page = new JournalPage();
 		page.room = 0;
 		page.identify().collect();
+
+		new Soul(Rat.class).identify().collect();
+		new SacrificialDagger().identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();
 		

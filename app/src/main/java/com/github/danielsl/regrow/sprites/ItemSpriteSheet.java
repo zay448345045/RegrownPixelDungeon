@@ -324,6 +324,8 @@ public class ItemSpriteSheet {
 	public static final int OTILUKES_SPECS = ROW17 + 1;
 	public static final int PUDDING_CUP = ROW17 + 2;
 	public static final int WHISTLE = ROW17 + 3;
+	public static final int SOUL = ROW17 + 4;
+	public static final int SACRIFICIAL_DAGGER = ROW17 + 11;
 	
 
 }

@@ -43,6 +43,7 @@ import com.github.danielsl.regrow.items.YellowDewdrop;
 import com.github.danielsl.regrow.items.artifacts.TimekeepersHourglass;
 import com.github.danielsl.regrow.items.rings.RingOfAccuracy;
 import com.github.danielsl.regrow.items.rings.RingOfWealth;
+import com.github.danielsl.regrow.items.weapon.melee.SacrificialDagger;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.levels.Level.Feeling;
 import com.github.danielsl.regrow.scenes.GameScene;
@@ -506,6 +507,10 @@ public abstract class Mob extends Char {
 
 		lootChance *= Math.pow(1.1, bonus);
 		lootChanceOther *= Math.pow(1.1, bonus);
+
+		if(!Dungeon.hero.buffs(SacrificialDagger.SoulReaper.class).isEmpty()){
+
+		}
 
 		if (Random.Float() < lootChance && Dungeon.hero.lvl <= maxLvl + 800) {
 			Item loot = createLoot();
