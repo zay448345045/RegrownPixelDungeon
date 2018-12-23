@@ -38,6 +38,7 @@ import com.github.danielsl.regrow.effects.Wound;
 import com.github.danielsl.regrow.items.Generator;
 import com.github.danielsl.regrow.items.Item;
 import com.github.danielsl.regrow.items.RedDewdrop;
+import com.github.danielsl.regrow.items.Soul;
 import com.github.danielsl.regrow.items.VioletDewdrop;
 import com.github.danielsl.regrow.items.YellowDewdrop;
 import com.github.danielsl.regrow.items.artifacts.TimekeepersHourglass;
@@ -509,7 +510,7 @@ public abstract class Mob extends Char {
 		lootChanceOther *= Math.pow(1.1, bonus);
 
 		if(!Dungeon.hero.buffs(SacrificialDagger.SoulReaper.class).isEmpty()){
-
+            Dungeon.level.drop(new Soul(getClass()), pos).sprite.drop();
 		}
 
 		if (Random.Float() < lootChance && Dungeon.hero.lvl <= maxLvl + 800) {
