@@ -23,6 +23,7 @@ import com.github.danielsl.regrow.Challenges;
 import com.github.danielsl.regrow.Dungeon;
 import com.github.danielsl.regrow.Journal;
 import com.github.danielsl.regrow.ShatteredPixelDungeon;
+import com.github.danielsl.regrow.actors.mobs.Otiluke;
 import com.github.danielsl.regrow.actors.mobs.Rat;
 import com.github.danielsl.regrow.items.Bomb;
 import com.github.danielsl.regrow.items.DebugSpawner;
@@ -200,7 +201,7 @@ public enum HeroClass {
 		page.room = 0;
 		page.identify().collect();
 
-		new Soul(Rat.class).identify().collect();
+		new Soul(Otiluke.class).identify().collect();
 		new SacrificialDagger().identify().collect();
 
 		KeyRing keyring = new KeyRing(); keyring.collect();

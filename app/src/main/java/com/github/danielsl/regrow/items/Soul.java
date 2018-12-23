@@ -9,6 +9,7 @@ import com.github.danielsl.regrow.actors.mobs.Bestiary;
 import com.github.danielsl.regrow.actors.mobs.Mob;
 import com.github.danielsl.regrow.actors.mobs.Rat;
 import com.github.danielsl.regrow.effects.Splash;
+import com.github.danielsl.regrow.items.food.Meat;
 import com.github.danielsl.regrow.levels.Level;
 import com.github.danielsl.regrow.scenes.GameScene;
 import com.github.danielsl.regrow.sprites.ItemSpriteSheet;
@@ -16,6 +17,7 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Soul extends Item {
@@ -30,7 +32,7 @@ public class Soul extends Item {
 
     public Class<? extends Mob> monsterClass;
 
-    public Soul(Class<? extends Mob> monsterClass){
+    public Soul(Class<? extends Mob> monsterClass) {
         this.monsterClass = monsterClass;
     }
 
@@ -44,31 +46,21 @@ public class Soul extends Item {
         return true;
     }
 
+    public static final String AC_SUMMON = "SUMMON";
+
     public ArrayList<String> actions(Hero hero) {
+        super.actions(hero);
         ArrayList<String> actions = super.actions(hero);
-        if (isEquipped(hero) && !cursed) {
-            actions.add(AC_SUMMON);
-        }
+        actions.add(AC_SUMMON);
+
         return actions;
-    }
-
-    public Item setSoulName(String soulName){
-        Soul item = this;
-
-        item.soulName = soulName;
-
-        return item;
     }
 
     public void execute(Hero hero, String action) {
         if (action.equals(AC_SUMMON)) {
-
-            if (!isEquipped(hero)){
-
-            }
-
-        }
-        else	{
+            detach(Dungeon.hero.belongings.backpack);
+            Dungeon.level.drop(shatter(Dungeon.hero, Dungeon.hero.pos), Dungeon.hero.pos);
+        } else {
             super.execute(hero, action);
         }
     }
@@ -107,19 +99,31 @@ public class Soul extends Item {
 
         if (newPos != -1) {
 
-
-            Mob mob = Bestiary.getMobByName(this.soulName);
-            mob.state = mob.WANDERING;
+            Mob mob;
+            try {
+                mob = monsterClass.getConstructor().newInstance();
+            } catch (NoSuchMethodException e) {
+                mob = new Rat();
+            } catch (InstantiationException e) {
+                mob = new Rat();
+            } catch (IllegalAccessException e) {
+                mob = new Rat();
+            } catch (InvocationTargetException e) {
+                mob = new Rat();
+            }
+            mob.state = mob.SLEEPING;
             mob.pos = newPos;
 
             GameScene.add(mob);
 
             Sample.INSTANCE.play(Assets.SND_BEE);
-            return new ShatteredGlass();
+            return new Meat();
         } else {
             return this;
         }
     }
+
+
 
 
     @Override
