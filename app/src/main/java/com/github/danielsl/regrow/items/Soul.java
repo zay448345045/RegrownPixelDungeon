@@ -1,11 +1,12 @@
 package com.github.danielsl.regrow.items;
 
-import com.github.danielsl.regrow.Dungeon;
+import com.github.danielsl.regrow.actors.hero.Hero;
 import com.github.danielsl.regrow.actors.mobs.Mob;
 import com.github.danielsl.regrow.actors.mobs.Rat;
-import com.github.danielsl.regrow.actors.mobs.npcs.Ghost;
 import com.github.danielsl.regrow.sprites.ItemSpriteSheet;
 import com.watabou.utils.Bundle;
+
+import java.util.ArrayList;
 
 public class Soul extends Item {
 
@@ -32,6 +33,30 @@ public class Soul extends Item {
     public boolean isIdentified() {
         return true;
     }
+
+    private static final String AC_SUMMON = "SUMMON";
+
+    public ArrayList<String> actions(Hero hero) {
+        ArrayList<String> actions = super.actions(hero);
+        if (isEquipped(hero) && !cursed) {
+            actions.add(AC_SUMMON);
+        }
+        return actions;
+    }
+
+    public void execute(Hero hero, String action) {
+        if (action.equals(AC_SUMMON)) {
+
+            if (!isEquipped(hero)){
+
+            }
+
+        }
+        else	{
+            super.execute(hero, action);
+        }
+    }
+
 
 
     @Override
